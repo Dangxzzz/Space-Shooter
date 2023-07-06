@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public float speed = 10f;
 
     protected BoundsCheck BndCheck;
+    
 
     #endregion
 
@@ -85,7 +86,7 @@ public class Enemy : MonoBehaviour
                     {
                         Main.S.ShipDestroyed(this);
                     }
-
+                    
                     notifiedOfDestruction = true;
                     Destroy(gameObject);
                 }

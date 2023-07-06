@@ -22,6 +22,7 @@ public class Main : MonoBehaviour
     public WeaponDefinition[] weaponDefinitions;
 
     private BoundsCheck _bndCheck;
+    private int _sumScore;
     private static Dictionary<WeaponType, WeaponDefinition> _weapDict;
 
     #endregion
@@ -67,6 +68,7 @@ public class Main : MonoBehaviour
 
     public void ShipDestroyed(Enemy e)
     {
+        _sumScore += e.score;
         if (Random.value <= e.powerUpDropChance)
         {
             int ndx = Random.Range(0, powerUpFrequency.Length);
@@ -81,7 +83,7 @@ public class Main : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        int ndx = Random.Range(0, prefabEnemis.Length);
+        int ndx = CreateLevels();
         GameObject go = Instantiate(prefabEnemis[ndx]);
         float enemyPadding = enemyDefaultPadding;
         if (go.GetComponent<BoundsCheck>() != null)
@@ -96,6 +98,36 @@ public class Main : MonoBehaviour
         pos.y = _bndCheck.camHeight + enemyPadding;
         go.transform.position = pos;
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
+    }
+
+    #endregion
+
+    #region Private methods
+
+    private int CreateLevels()
+    {
+        int ndx = 0;
+        if (_sumScore >= 0 && _sumScore <= 800)
+        {
+            ndx = 0;
+        }
+        else if (_sumScore > 800 && _sumScore <= 2000)
+        {
+            ndx = Random.Range(0, 2);
+            enemySpawnPerSecond = 0.6f;
+        }
+        else if (_sumScore > 2000 && _sumScore <= 4000)
+        {
+            ndx = Random.Range(0, 4);
+            enemySpawnPerSecond = 0.7f;
+        }
+        else if (_sumScore > 4000)
+        {
+            ndx = Random.Range(0, prefabEnemis.Length);
+            enemySpawnPerSecond = _sumScore > 4000 && _sumScore <= 6000 ? 0.8f : 0.9f;
+        }
+
+        return ndx;
     }
 
     #endregion
