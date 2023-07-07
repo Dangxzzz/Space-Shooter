@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +25,7 @@ public class Main : MonoBehaviour
     private BoundsCheck _bndCheck;
     private int _sumScore;
     private static Dictionary<WeaponType, WeaponDefinition> _weapDict;
+    public TextMeshProUGUI ScoreCounter;
 
     #endregion
 
@@ -69,6 +71,11 @@ public class Main : MonoBehaviour
     public void ShipDestroyed(Enemy e)
     {
         _sumScore += e.score;
+        ScoreCounter.text = "Score: "+_sumScore.ToString();
+        if (_sumScore > HighScore.Score)
+        {
+            HighScore.Score = _sumScore;
+        }
         if (Random.value <= e.powerUpDropChance)
         {
             int ndx = Random.Range(0, powerUpFrequency.Length);
