@@ -65,7 +65,7 @@ public class Main : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(Scenes.Game);
     }
 
     public void ShipDestroyed(Enemy e)
