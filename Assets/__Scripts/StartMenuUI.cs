@@ -1,15 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class StartMenuUI : MonoBehaviour
 {
     #region Variables
 
+    public TextMeshProUGUI NameLabel;
+    public Color[] colors=new Color[5];
     public GameObject Planet;
     public float radius = 5f;
     public GameObject Ship;
     public float speed = 0.001f;
     public float tiltAngle = 45f;
     private float _angle;
+    
 
     private Vector3 _center;
 
@@ -25,6 +30,12 @@ public class StartMenuUI : MonoBehaviour
     private void Update()
     {
         Planet.transform.Rotate(0.0f, 0, 0.1f);
+        MotionShip();
+        ChangeTextColor();
+    }
+
+    private void MotionShip()
+    {
         _angle += speed * Time.deltaTime;
 
         float x = _center.x + Mathf.Cos(_angle + 30) * radius;
@@ -41,6 +52,12 @@ public class StartMenuUI : MonoBehaviour
         float tiltAmount = Mathf.Sin(_angle * 2f) * tiltAngle;
         Quaternion tiltRotation = Quaternion.Euler(0f, 0f, tiltAmount);
         Ship.transform.rotation *= tiltRotation;
+    }
+
+    private void ChangeTextColor()
+    {
+        int ntx = Random.Range(0, colors.Length);
+        NameLabel.color = colors[ntx];
     }
 
     #endregion
