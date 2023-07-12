@@ -1,6 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
+using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
+
 
 public class StartMenuUI : MonoBehaviour
 {
@@ -14,7 +19,10 @@ public class StartMenuUI : MonoBehaviour
     public float speed = 0.001f;
     public float tiltAngle = 45f;
     private float _angle;
-    
+    public Button StartGameButton;
+    public Button SettingButton;
+    public Button ExitButton;
+
 
     private Vector3 _center;
 
@@ -22,16 +30,40 @@ public class StartMenuUI : MonoBehaviour
 
     #region Unity lifecycle
 
+  
+
     private void Start()
     {
         _center = Ship.transform.position;
+        StartGameButton.onClick.AddListener(OnStartGameButtonClick);
+        SettingButton.onClick.AddListener(OnSettingButtonClick);
+        ExitButton.onClick.AddListener(OnExitButtonClick);
+        
     }
-
     private void Update()
     {
         Planet.transform.Rotate(0.0f, 0, 0.1f);
         MotionShip();
         ChangeTextColor();
+    }
+
+    private void OnStartGameButtonClick()
+    {
+        SceneManager.LoadScene(Scenes.Game);
+    }
+
+    private void OnSettingButtonClick()
+    {
+        SceneManager.LoadScene(Scenes.SettingMenu);
+    }
+
+    private void OnExitButtonClick()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
     }
 
     private void MotionShip()
