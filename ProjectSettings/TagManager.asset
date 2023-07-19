@@ -10,6 +10,8 @@ TagManager:
   - ProjectileEnemy
   - PowerUp
   - PowerUpBox
+  - BG_AUDIO
+  - BG_MUSIC_VOLUME_SLIDER
   layers:
   - Default
   - TransparentFX

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 6e03dedce8b510843aee69d46036117b
+  - enabled: 1
+    path: Assets/Scenes/ShipMenuScene.unity
+    guid: 4536e00f23d59174a9800519807482fd
   m_configObjects: {}

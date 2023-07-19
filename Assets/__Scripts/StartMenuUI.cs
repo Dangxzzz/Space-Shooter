@@ -54,7 +54,7 @@ public class StartMenuUI : MonoBehaviour
 
     private void OnSettingButtonClick()
     {
-        SceneManager.LoadScene(Scenes.SettingMenu);
+        SceneManager.LoadScene(Scenes.ShipMenu);
     }
 
     private void OnExitButtonClick()
