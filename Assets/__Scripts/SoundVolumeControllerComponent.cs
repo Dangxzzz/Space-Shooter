@@ -53,7 +53,7 @@ public class SoundVolumeControllerComponent : MonoBehaviour
                 PlayerPrefs.SetFloat(_saveVolume, _volume);
             }
         }
-
+        StaticSoundVolumeSave.VolumeSound = _volume;
         _audioSource.volume = _volume;
     }
 

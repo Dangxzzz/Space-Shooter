@@ -1,11 +1,15 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class BackgroundMusicController : MonoBehaviour
 {
     #region Variables
 
+    [FormerlySerializedAs("createTag")]
     [Header("Tags")]
-    [SerializeField] private string createTag;
+    [SerializeField] private string _createTag;
 
     #endregion
 
@@ -13,14 +17,14 @@ public class BackgroundMusicController : MonoBehaviour
 
     private void Awake()
     {
-        GameObject obj = GameObject.FindWithTag(createTag);
-        if (obj != null)
+        GameObject obj = GameObject.FindWithTag(_createTag);
+        if (obj != null||SceneManager.GetActiveScene().name == Scenes.Game)
         {
             Destroy(gameObject);
         }
         else
         {
-            gameObject.tag = createTag;
+            gameObject.tag = _createTag;
             DontDestroyOnLoad(gameObject);
         }
     }

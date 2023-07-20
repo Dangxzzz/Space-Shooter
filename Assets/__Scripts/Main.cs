@@ -14,6 +14,8 @@ public class Main : MonoBehaviour
     {
         WeaponType.Blaster, WeaponType.Blaster, WeaponType.Spread, WeaponType.Shield,
     };
+    [Header("Tags")]
+    [SerializeField] private string _createTag;
 
     [Header("Set in Inspector")]
     public GameObject[] prefabEnemis;
@@ -33,6 +35,8 @@ public class Main : MonoBehaviour
 
     private void Awake()
     {
+        GameObject obj = GameObject.FindWithTag(_createTag);
+        Destroy(obj);
         S = this;
         _bndCheck = GetComponent<BoundsCheck>();
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);

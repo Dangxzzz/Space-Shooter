@@ -733,11 +733,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 91d1e867b8feb7f4b85093c32c6b700e, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 2b2cecd239a86014a8f82e81106651d7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 24af83498189cd44887e9d31565636d4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd3c898b47287344bf2b594684a0c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createTag: BG_AUDIO
+  _createTag: BG_AUDIO
 --- !u!1 &534149770 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ed092fc8fa2eb4b4986b7e12153c0b5f, type: 3}
@@ -1738,6 +1738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameLabel: {fileID: 2061384516}
+  SliderLabel: {fileID: 105337346}
   colors:
   - {r: 0.8846055, g: 0.50377357, b: 1, a: 1}
   - {r: 0.9372524, g: 1, b: 0.40943396, a: 1}

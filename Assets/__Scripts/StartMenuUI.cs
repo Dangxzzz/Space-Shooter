@@ -12,6 +12,7 @@ public class StartMenuUI : MonoBehaviour
     #region Variables
 
     public TextMeshProUGUI NameLabel;
+    public TextMeshProUGUI SliderLabel;
     public Color[] colors=new Color[5];
     public GameObject Planet;
     public float radius = 5f;
@@ -90,6 +91,7 @@ public class StartMenuUI : MonoBehaviour
     {
         int ntx = Random.Range(0, colors.Length);
         NameLabel.color = colors[ntx];
+        SliderLabel.color = colors[ntx];
     }
 
     #endregion
