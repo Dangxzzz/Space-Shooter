@@ -56,6 +56,7 @@ public class Weapon : MonoBehaviour
 
     private readonly float _rocketSpeed = 40f;
     private readonly float _rotationSpeed = 25f;
+    private GameSoundEffectService _soundService;
     private float _startTime;
     private Transform _target;
 
@@ -75,6 +76,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        _soundService = FindObjectOfType<GameSoundEffectService>();
         collar = transform.Find("Gun_prefab").gameObject;
         _collarRend = collar.GetComponent<Renderer>();
         SetType(type);
@@ -168,6 +170,7 @@ public class Weapon : MonoBehaviour
                 _target = FindNearestEnemy();
                 break;
             case WeaponType.Laser:
+                _soundService.PlayLaserSound();
                 StartCoroutine(FireLaser());
                 break;
         }
@@ -176,6 +179,7 @@ public class Weapon : MonoBehaviour
     public ProjectileHero MakeProjectile()
     {
         GameObject go = Instantiate(def.projectilePrefab);
+        _soundService.PlayShootSound();
         if (transform.parent.gameObject.tag == "Hero")
         {
             go.tag = "ProjectileHero";
@@ -230,8 +234,7 @@ public class Weapon : MonoBehaviour
         gradient.SetKeys(colorKeys, alphaKeys);
 
         lineRenderer.colorGradient = gradient;
-
-        // Обновляем материал с градиентом
+        
         Material material = new(Shader.Find("Sprites/Default"));
         material.color = Color.white;
         material.SetColor("_GradientColor", Color.white);

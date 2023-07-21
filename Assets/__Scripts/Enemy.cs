@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     public float speed = 10f;
 
     protected BoundsCheck BndCheck;
-    
+    private GameSoundEffectService _soundService;
 
     #endregion
 
@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        _soundService = FindObjectOfType<GameSoundEffectService>();
         BndCheck = GetComponent<BoundsCheck>();
         materials = Utilts.GetAllMaterials(gameObject);
         originalColors = new Color[materials.Length];
@@ -84,9 +85,10 @@ public class Enemy : MonoBehaviour
                 {
                     if (!notifiedOfDestruction)
                     {
+                        _soundService.PlayKillSound();
                         Main.S.ShipDestroyed(this);
                     }
-                    
+
                     notifiedOfDestruction = true;
                     Destroy(gameObject);
                 }

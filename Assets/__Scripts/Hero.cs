@@ -19,6 +19,7 @@ public class Hero : MonoBehaviour
     private float _shieldLevel = 1;
 
     private GameObject _lastTriggerGo;
+    private GameSoundEffectService _soundService;
 
     #endregion
 
@@ -32,6 +33,7 @@ public class Hero : MonoBehaviour
             _shieldLevel = Mathf.Min(value, 4);
             if (value < 0)
             {
+                _soundService.PlayLoseSound();
                 Destroy(gameObject);
                 Main.S.DelayedRestart(gameRestartDelay);
             }
@@ -44,6 +46,8 @@ public class Hero : MonoBehaviour
 
     private void Start()
     {
+        _soundService = FindObjectOfType<GameSoundEffectService>();
+        _soundService.SoundEffect.volume=StaticSoundVolumeSave.VolumeSound;
         if (S == null)
         {
             S = this;
@@ -86,11 +90,13 @@ public class Hero : MonoBehaviour
         _lastTriggerGo = go;
         if (go.tag == "Enemy" || go.tag == "ProjectileEnemy")
         {
+            _soundService.PlayDamageSound();
             ShieldLevel--;
             Destroy(go);
         }
         else if (go.tag == "PowerUp")
         {
+            _soundService.PlayBonusSound();
             AbsorbPowerUp(go);
         }
         else
