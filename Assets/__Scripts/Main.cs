@@ -125,17 +125,17 @@ public class Main : MonoBehaviour
         else if (_sumScore > 800 && _sumScore <= 2000)
         {
             ndx = Random.Range(0, 2);
-            enemySpawnPerSecond = 0.6f;
+            enemySpawnPerSecond = 0.4f;
         }
         else if (_sumScore > 2000 && _sumScore <= 4000)
         {
             ndx = Random.Range(0, 4);
-            enemySpawnPerSecond = 0.7f;
+            enemySpawnPerSecond = 0.5f;
         }
         else if (_sumScore > 4000)
         {
             ndx = Random.Range(0, prefabEnemis.Length);
-            enemySpawnPerSecond = _sumScore > 4000 && _sumScore <= 6000 ? 0.8f : 0.9f;
+            enemySpawnPerSecond = _sumScore > 4000 && _sumScore <= 6000 ? 0.6f : 0.8f;
         }
 
         return ndx;

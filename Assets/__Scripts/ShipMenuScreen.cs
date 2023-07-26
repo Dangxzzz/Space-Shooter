@@ -12,6 +12,7 @@ public class ShipMenuScreen : MonoBehaviour
     public TextMeshProUGUI NameLabel;
     public GameObject Planet;
     public Button BackButton;
+    [SerializeField] private GameObject[] ships = new GameObject[5];
 
     #endregion
 
