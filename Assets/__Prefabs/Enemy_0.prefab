@@ -64,17 +64,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5ef378e01c7ad478fc3850e8d78b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  fireRate: 0.3
+  damageDoneTime: 0
   health: 12
+  materials: []
+  notifiedOfDestruction: 0
+  originalColors: []
+  powerUpDropChance: 0.25
   score: 100
   showDamageDuration: 0.1
-  powerUpDropChance: 0.25
-  originalColors: []
-  materials: []
   showingDamage: 0
-  damageDoneTime: 0
-  notifiedOfDestruction: 0
+  speed: 10
 --- !u!114 &2307538167461752874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,15 +86,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bedd02f51865942b3e9c605600766f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: -2.5
-  keepOnScreen: 0
-  isOnScreen: 1
-  camWidth: 0
   camHeight: 0
+  camWidth: 0
+  isOnScreen: 1
+  keepOnScreen: 0
   offRight: 0
   offLeft: 0
   offUp: 0
   offDown: 0
+  radius: -2.5
 --- !u!135 &6327012838846148811
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -107,7 +106,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &446732599389262718
 PrefabInstance:
