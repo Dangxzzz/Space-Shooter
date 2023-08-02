@@ -1545,7 +1545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1270190192}
   m_Layer: 8
-  m_Name: Cockpit
+  m_Name: Ship
   m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2987,6 +2987,7 @@ MonoBehaviour:
   - {fileID: 819528322}
   - {fileID: 1253329734}
   _shieldLevel: 1
+  _shipModel: {fileID: 1270190191}
 --- !u!4 &1968363743
 Transform:
   m_ObjectHideFlags: 0

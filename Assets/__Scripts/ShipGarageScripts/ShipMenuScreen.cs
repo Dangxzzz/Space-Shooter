@@ -13,9 +13,7 @@ public class ShipMenuScreen : MonoBehaviour
 
     public TextMeshProUGUI NameLabel;
     public GameObject Planet;
-    // [SerializeField] private Button NextShipButton;
-    // [SerializeField] private Button PrevShipButton;
-    [SerializeField] private Button ApllyButton;
+    
     private ScriptableObjectChanger _changer;
 
     #endregion
@@ -25,8 +23,6 @@ public class ShipMenuScreen : MonoBehaviour
     private void Start()
     {
         BackButton.onClick.AddListener(OnBackButtonClick);
-        // NextShipButton.onClick.AddListener(OnNextShipButtonClick);
-        // PrevShipButton.onClick.AddListener(OnPrevShipButtonClick);
     }
 
     private void Update()
@@ -49,16 +45,6 @@ public class ShipMenuScreen : MonoBehaviour
     {
         SceneManager.LoadScene(Scenes.StartMenu);
     }
-
-    // private void OnNextShipButtonClick()
-    // {
-    //     _changer.ChangeMap(1);
-    // }
-    //
-    // private void OnPrevShipButtonClick()
-    // {
-    //     _changer.ChangeMap(1);
-    // }
-
+    
     #endregion
 }
