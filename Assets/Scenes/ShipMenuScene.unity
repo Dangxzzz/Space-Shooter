@@ -1754,6 +1754,7 @@ MonoBehaviour:
   scriptableObjects:
   - {fileID: 11400000, guid: 563d0ec0b09f45b4c9f8c7b5b2945ffb, type: 2}
   - {fileID: 11400000, guid: f72b560b048281c47a2d906ebd89a05b, type: 2}
+  - {fileID: 11400000, guid: 638c291eba1cf0f4eaaddebbf519f8c5, type: 2}
   _shipDisplay: {fileID: 1986552487}
 --- !u!1 &1673112642
 GameObject:
@@ -2254,6 +2255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipName: {fileID: 1404289592}
   _shipModel: {fileID: 585942141}
+  _defaultShip: {fileID: 11400000, guid: 563d0ec0b09f45b4c9f8c7b5b2945ffb, type: 2}
 --- !u!4 &1986552488
 Transform:
   m_ObjectHideFlags: 0

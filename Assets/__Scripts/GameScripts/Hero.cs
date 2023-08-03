@@ -17,10 +17,10 @@ public class Hero : MonoBehaviour
     [Header("Set Dynamically")]
     [SerializeField]
     private float _shieldLevel = 1;
+    [SerializeField] private GameObject _shipModel;
 
     private GameObject _lastTriggerGo;
     private GameSoundEffectService _soundService;
-    [SerializeField] private GameObject _shipModel;
 
     #endregion
 
@@ -44,14 +44,11 @@ public class Hero : MonoBehaviour
     #endregion
 
     #region Unity lifecycle
-    private void Awake()
-    {
-        StaticShip.Initialize();
-    }
+
     private void Start()
     {
         _soundService = FindObjectOfType<GameSoundEffectService>();
-        _soundService.SoundEffect.volume=StaticSoundVolumeSave.VolumeSound;
+        _soundService.SoundEffect.volume = StaticSoundVolumeSave.VolumeSound;
         if (S == null)
         {
             S = this;
@@ -60,22 +57,11 @@ public class Hero : MonoBehaviour
         {
             Debug.LogError("Hero.Awake()-Attempted to assign second Hero.S!");
         }
+
         StartShip();
         ClearWeapons();
         weapons[0].SetType(WeaponType.Blaster);
     }
-    private void StartShip()
-    {
-        Debug.Log($"Ship name2:{StaticShip.ShipInGame}");
-        if (_shipModel.transform.childCount > 0)
-        {
-            Destroy(_shipModel.transform.GetChild(0).gameObject);
-        }
-        Debug.Log($"Ship name2:{_shipModel.name}");
-        Instantiate(StaticShip.ShipInGame, _shipModel.transform.position, _shipModel.transform.rotation,
-            _shipModel.transform);
-    }
-   
 
     private void Update()
     {
@@ -177,6 +163,20 @@ public class Hero : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void StartShip()
+    {
+        if (StaticShip._isShipSaved)
+        {
+            if (_shipModel.transform.childCount > 0)
+            {
+                Destroy(_shipModel.transform.GetChild(0).gameObject);
+            }
+
+            Instantiate(StaticShip.ShipInGame.shipModel, _shipModel.transform.position, _shipModel.transform.rotation,
+                _shipModel.transform);
+        }
     }
 
     #endregion
