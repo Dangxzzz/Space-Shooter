@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e841003df5650444839880342359b74, type: 3}
-  m_Name: Ship Destroyer
+  m_Name: Ship3
   m_EditorClassIdentifier: 
-  nameShip: HeroShip
-  shipModel: {fileID: 3222742072215158957, guid: 918b4d5952900774db1fee0ab2c8070a, type: 3}
+  nameShip: DeathStar
+  shipModel: {fileID: 365853915526281720, guid: 8888bc48cf648504cbdc80ec54675547, type: 3}

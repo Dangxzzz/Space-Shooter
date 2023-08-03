@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e841003df5650444839880342359b74, type: 3}
   m_Name: Ship Plane
   m_EditorClassIdentifier: 
-  nameShip: Test2
-  shipModel: {fileID: 724868563539764567, guid: 7de347fbba16f8047a742798a2ebb964, type: 3}
+  nameShip: Galactic3000
+  shipModel: {fileID: 5941318623843481256, guid: 523e0f411b6527d4183e9ff4ef4f6f8d, type: 3}
