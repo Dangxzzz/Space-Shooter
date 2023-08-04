@@ -28,11 +28,17 @@ public class Main : MonoBehaviour
     private int _sumScore;
     private static Dictionary<WeaponType, WeaponDefinition> _weapDict;
     public TextMeshProUGUI ScoreCounter;
+    private bool _isNewRecord;
 
     #endregion
 
     #region Unity lifecycle
 
+
+    public bool IsNewRecord
+    {
+        get => _isNewRecord;
+    }
     private void Awake()
     {
         GameObject obj = GameObject.FindWithTag(_createTag);
@@ -78,6 +84,7 @@ public class Main : MonoBehaviour
         ScoreCounter.text = "Score: "+_sumScore.ToString();
         if (_sumScore > HighScore.Score)
         {
+            _isNewRecord = true;
             HighScore.Score = _sumScore;
         }
         if (Random.value <= e.powerUpDropChance)

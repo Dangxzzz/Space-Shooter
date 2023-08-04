@@ -21,6 +21,7 @@ public class Hero : MonoBehaviour
 
     private GameObject _lastTriggerGo;
     private GameSoundEffectService _soundService;
+    public static bool _isDead;
 
     #endregion
 
@@ -34,6 +35,7 @@ public class Hero : MonoBehaviour
             _shieldLevel = Mathf.Min(value, 4);
             if (value < 0)
             {
+                _isDead = true;
                 _soundService.PlayLoseSound();
                 Destroy(gameObject);
                 Main.S.DelayedRestart(gameRestartDelay);
@@ -47,6 +49,7 @@ public class Hero : MonoBehaviour
 
     private void Start()
     {
+        _isDead = false;
         _soundService = FindObjectOfType<GameSoundEffectService>();
         _soundService.SoundEffect.volume = StaticSoundVolumeSave.VolumeSound;
         if (S == null)

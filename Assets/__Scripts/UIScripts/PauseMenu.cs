@@ -5,11 +5,13 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     #region Variables
+
     public static bool gameIsPaused;
 
-    public GameObject PauseMenuUI;
-    public Button MainMenuButton;
-    public Button ExitButton;
+    [SerializeField] private GameObject _pauseMenuUI;
+    [SerializeField] private Button _mainMenuButton;
+    [SerializeField] private Button _exitButton;
+    [SerializeField] private Button _resumeButton;
 
     #endregion
 
@@ -19,8 +21,9 @@ public class PauseMenu : MonoBehaviour
     {
         gameIsPaused = false;
         Time.timeScale = 1;
-        ExitButton.onClick.AddListener(OnExitButtonClick);
-        MainMenuButton.onClick.AddListener(OnMainMenuButtonClick);
+        _exitButton.onClick.AddListener(OnExitButtonClick);
+        _mainMenuButton.onClick.AddListener(OnMainMenuButtonClick);
+        _resumeButton.onClick.AddListener(OnResumeButtonClick);
     }
 
     private void Update()
@@ -42,18 +45,13 @@ public class PauseMenu : MonoBehaviour
 
     #region Private methods
 
-    private void Pause_Menu()
+    private void OnExitButtonClick()
     {
-        PauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        gameIsPaused = true;
-    }
-
-    private void Resume()
-    {
-        PauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        gameIsPaused = false;
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     private void OnMainMenuButtonClick()
@@ -62,13 +60,23 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private void OnExitButtonClick()
+    private void OnResumeButtonClick()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        Resume();
+    }
+
+    private void Pause_Menu()
+    {
+        _pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
+    }
+
+    private void Resume()
+    {
+        _pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
     }
 
     #endregion
